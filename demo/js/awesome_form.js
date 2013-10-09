@@ -8,6 +8,8 @@ jQuery(function($){
               'number',
               'phone_number',
               'postal_code',
+              'time_yy_mm',
+              'uk_sort_code',
               'ontario_drivers_license_number',
               'ontario_photo_health_card_number',
               'ontario_outdoors_card_number']

@@ -51,6 +51,8 @@
                 <li><a href="#ontario_outdoors_card_number">Ontario Outdoors Card Number</a></li>
                 <li><a href="#phone_number">Phone Number (North America)</a></li>
                 <li><a href="#postal_code">Postal Code (Canada)</a></li>
+                <li><a href="#time_yy_mm">Time yy / mm</a></li>
+                <li><a href="#uk_sort_code">Uk Sort Code</a></li>
             </ul>
         </div>
 
@@ -88,10 +90,6 @@
 
         </div>
 
-
-
-
-
         <div class='field' id='dd_mm_yyyy'>
             <h4>Date DD / MM / YYYY</h4>
             <p> <input type="text" class='dd_mm_yyyy' placeholder="Date DD / MM / YYYY"> </p>
@@ -112,8 +110,7 @@
                 <li>Validates the date can be parsed.</li>
                 <li>Validates the date actually exists so it will fail if February 30th is entered even though it passes parsing.</li>
             </ul>
-            <div class="highlight highlight-javascript"> <pre>
-<span class="nx">$</span><span class="p">(</span><span class="s1">'input.dd_mm_yyyy'</span><span class="p">).</span><span class="nx">formance</span><span class="p">(</span><span class="s1">'validate_dd_mm_yyyy'</span><span class="p">);</span>
+            <div class="highlight highlight-javascript"> <pre><span class="nx">$</span><span class="p">(</span><span class="s1">'input.dd_mm_yyyy'</span><span class="p">).</span><span class="nx">formance</span><span class="p">(</span><span class="s1">'validate_dd_mm_yyyy'</span><span class="p">);</span>
              </pre> </div>
 
             <p>Date includes a helper function to retrieve the date value. <em>Note it does not check to see if it is valid</em>. It simply creates a date object with the specified values which may be incorrect. For example <code>new Date(2013, 2-1, 30)</code> returns March 2nd because February does not have 30 days. You should check if it is valid before using the date. </p>
@@ -125,19 +122,6 @@
              </pre> </div>
 
         </div>
-
-
-
-
-
-        <div class='field' id='yyyy_mm_dd'>
-            <h4>Date YYYY / MM / DD</h4>
-            <p> <input type="text" class='yyyy_mm_dd' placeholder="Date YYYY / MM / DD"> </p>
-
-            <p>Similar to documentation of <a href='#dd_mm_yyyy'>dd / mm / yyyy</a> except the format is <code>yyyy / mm / dd</code>.</p>
-        </div>
-
-
 
 
 
@@ -297,7 +281,6 @@
             </pre></div>
 
         </div>
-
 
 
 
@@ -475,6 +458,72 @@
 
 
         </div>
+          <div class='field' id='time_yy_mm'>
+            <h4>Time YY / MM</h4>
+            <p> <input type="text" class="time_yy_mm" pattern="\d*" x-autocompletetype="time_yy_mm" placeholder="Time YY / MM" required> </p>
+            <p>Formats a time in years and months:</p>
+            <p>Useful for inputting time in years and months. For example, duration of employment or residency.</p>
+
+            <ul>
+                <li>Limits to 4 numbers</li>
+                <li>Restricts input to numbers</li>
+                <li>Includes a slash between every 2 digits</li>
+            </ul>
+            <div class="highlight highlight-javascript"><pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'input.time_yy_mm'</span><span class="p">).</span><span class="nx">formance</span><span class="p">(</span><span class="s1">'format_time_yy_mm'</span><span class="p">);</span>
+             </pre></div>
+
+            <p>Validates the time in years and months:</p>
+            <ul>
+                <li>Validates numbers</li>
+                <li>Validates length</li>
+            </ul>
+            <div class="highlight highlight-javascript">
+            <pre>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">'input.time_yy_mm'</span><span class="p">).</span><span class="nx">formance</span><span class="p">(</span><span class="s1">'validate_time_yy_mm'</span><span class="p">);</span> 
+<span class="c1">//examples</span> 
+<span class="nx">$</span><span class="p">(</span><span class="s2">"&lt;input value='09 / 09' /&gt;"</span><span class="p">).</span><span class="nx">formance</span><span class="p">(</span><span class="s1">'validate_time_yy_mm'</span><span class="p">);</span>   <span class="c1">// true</span> 
+<span class="nx">$</span><span class="p">(</span><span class="s2">"&lt;input value='10 /' /&gt;"</span><span class="p">).</span><span class="nx">formance</span><span class="p">(</span><span class="s1">'validate_time_yy_mm'</span><span class="p">);</span>   <span class="c1">// false</span> 
+             </pre></div>
+
+        </div>
+
+        <div class='field' id='yyyy_mm_dd'>
+            <h4>Date YYYY / MM / DD</h4>
+            <p> <input type="text" class='yyyy_mm_dd' placeholder="Date YYYY / MM / DD"> </p>
+
+            <p>Similar to documentation of <a href='#dd_mm_yyyy'>dd / mm / yyyy</a> except the format is <code>yyyy / mm / dd</code>.</p>
+        </div>
+  <div class='field' id='uk_sort_code'>
+            <h4>Uk Sort Code</h4>
+            <p> <input type="text" class="uk_sort_code" pattern="\d*" x-autocompletetype="uk_sort_code" placeholder="Uk sort code" required> </p>
+
+            <p>Formats the UK sort code:</p>
+
+            <ul>
+                <li>Limits to 6 numbers</li>
+                <li>Restricts input to numbers</li>
+                <li>Includes a dash between every 2 digits</li>
+            </ul>
+            <div class="highlight highlight-javascript"><pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'input.uk_sort_code'</span><span class="p">).</span><span class="nx">formance</span><span class="p">(</span><span class="s1">'format_uk_sort_code'</span><span class="p">);</span>
+             </pre></div>
+
+            <p>Validates the UK sort code:</p>
+            <ul>
+                <li>Validates numbers</li>
+                <li>Validates length</li>
+            </ul>
+            <div class="highlight highlight-javascript">
+            <pre>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">'input.uk_sort_code'</span><span class="p">).</span><span class="nx">formance</span><span class="p">(</span><span class="s1">'validate_uk_sort_code'</span><span class="p">);</span> 
+<span class="c1">//examples</span> 
+<span class="nx">$</span><span class="p">(</span><span class="s2">"&lt;input value='09 - 09 - 09' /&gt;"</span><span class="p">).</span><span class="nx">formance</span><span class="p">(</span><span class="s1">'validate_uk_sort_code'</span><span class="p">);</span>   <span class="c1">// true</span> 
+<span class="nx">$</span><span class="p">(</span><span class="s2">"&lt;input value='00 -' /&gt;"</span><span class="p">).</span><span class="nx">formance</span><span class="p">(</span><span class="s1">'validate_uk_sort_code'</span><span class="p">);</span>   <span class="c1">// false</span> 
+             </pre></div>
+
+        </div>
+          
 
       </section>
       <footer>
@@ -483,7 +532,7 @@
       </footer>
     </div>
 <!-- Javascript at the bottom for faster loading -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="js/scale.fix.js"></script>
     <script src="js/jquery.formance.min.js" /></script>
     <script src="js/awesome_form.js"></script>
