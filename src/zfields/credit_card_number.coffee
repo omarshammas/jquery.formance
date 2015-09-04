@@ -124,7 +124,7 @@ reFormatCardNumber = (e) ->
     setTimeout =>
         $target = $(e.currentTarget)
         value   = $target.val()
-        value   = $.formance.formatCardNumber(value)
+        value   = $.formance.formatCreditCardNumber(value)
         $target.val(value)
 
 formatCardNumber = (e) ->
